@@ -1,0 +1,13 @@
+{
+  "name": "faq-multilingual-backend",
+  "version": "1.0.0",
+  "description": "multilingual FAQ system backend",
+  "main": "src/app.js",
+  "scripts": {
+    "start": "node src/app.js",
+    "dev": "nodemon src/app.js",
+    "test": "jest"
+  },
+  "author": "Abhinav Rai",
+  "license": "ISC"
+}
