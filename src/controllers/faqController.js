@@ -47,4 +47,15 @@ const updateFAQ = async (req, res) => {
     }
 };
 
-model.exports = {getAllFAQs,createFAQ,updateFAQ};
+const deleteFAQ = async (req, res) => {
+    const { id } = req.params;
+
+    try {
+        await FAQ.findByIdAndDelete(id);
+        res.json({ message: "FAQ deleted" });
+    } catch (err) {
+        res.status(500).json({ message: "Server Error" });
+    }  
+};
+
+model.exports = {getAllFAQs,createFAQ,updateFAQ,deleteFAQ};
