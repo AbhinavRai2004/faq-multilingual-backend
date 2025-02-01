@@ -19,4 +19,15 @@ const getAllFAQs = async (req, res) => {
     }
 };
 
-model.exports = {getAllFAQs};
+const createFAQ = async (req, res) => {
+    const { question, answer, translations } = req.body;
+    try {
+        const faq = new FAQ({ question, answer, translations });
+        await faq.save();
+        res.status(201).json(faq);
+    } catch (err) {
+        res.status(500).json({ message: "Server Error" });
+    }
+};
+
+model.exports = {getAllFAQs,createFAQ};
