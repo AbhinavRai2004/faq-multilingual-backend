@@ -15,7 +15,6 @@ const faqSchema = new mongoose.Schema({
 
 faqSchema.methods.getTranslatedFAQ = function (lang) {
   const translation = this.translations.get(lang);
-
   return {
     question: translation?.question || this.question,
     answer: translation?.answer || this.answer,
