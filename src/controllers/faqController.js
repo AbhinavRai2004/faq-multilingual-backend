@@ -1,4 +1,5 @@
 const FAQ = require("../models/FAQ");
+const {translateText} = require("../services/translationService");
 const { getCache, setCache } = require("../services/cacheService");
 
 const getAllFAQs = async (req, res) => {
@@ -30,4 +31,20 @@ const createFAQ = async (req, res) => {
     }
 };
 
-model.exports = {getAllFAQs,createFAQ};
+const updateFAQ = async (req, res) => {
+    const { id } = req.params;
+    const { question, answer, translations } = req.body;
+  
+    try {
+      const faq = await FAQ.findByIdAndUpdate(
+        id,
+        { question, answer, translations },
+        { new: true }
+      );
+      res.json(faq);
+    } catch (err) {
+      res.status(500).json({ message: "Server Error" });
+    }
+};
+
+model.exports = {getAllFAQs,createFAQ,updateFAQ};
