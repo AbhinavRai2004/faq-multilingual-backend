@@ -2,6 +2,7 @@ const FAQ = require("../models/faqModel");
 const { translateFAQ } = require("../services/translationService");
 const { getCache, setCache, delCache } = require("../services/cacheService");
 
+// Get all FAQs
 const getAllFAQs = async (req, res) => {
   const { lang = "en" } = req.query;
   const cacheKey = `faqs:${lang}`;
@@ -21,6 +22,7 @@ const getAllFAQs = async (req, res) => {
   }
 };
 
+// ceate a new FAQ
 const createFAQ = async (req, res) => {
   const { question, answer, languages = ["hi", "bn"] } = req.body;
 
@@ -35,6 +37,7 @@ const createFAQ = async (req, res) => {
   }
 };
 
+// Update a FAQ
 const updateFAQ = async (req, res) => {
   const { id } = req.params;
   const { question, answer, languages = ["hi", "bn"] } = req.body;
@@ -57,6 +60,7 @@ const updateFAQ = async (req, res) => {
   }
 };
 
+// Delete a FAQ
 const deleteFAQ = async (req, res) => {
   const { id } = req.params;
   try {
