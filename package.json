@@ -11,9 +11,9 @@
   "author": "Abhinav Rai",
   "license": "ISC",
   "dependencies": {
-    "@adminjs/express": "^6.1.1",
-    "@adminjs/mongoose": "^4.1.0",
-    "adminjs": "^7.8.15",
+    "@admin-bro/mongoose": "^1.1.0",
+    "admin-bro": "^4.0.1",
+    "admin-bro-expressjs": "^2.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",

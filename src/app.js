@@ -2,11 +2,25 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const FAQ = require('./models/faqModel'); 
+const AdminBro = require('admin-bro');
+const AdminBroExpressjs = require('admin-bro-expressjs');
+const AdminBroMongoose = require('@admin-bro/mongoose');
 
 dotenv.config();
 const app = express();
 connectDB();
 
+// AdminJS Setup
+AdminBro.registerAdapter(AdminBroMongoose);
+
+const adminBro = new AdminBro({
+    resources: [FAQ], 
+    rootPath: '/admin',
+});
+
+const router = AdminBroExpressjs.buildRouter(adminBro);
+app.use(adminBro.options.rootPath, router);
 
 // Middleware
 app.use(cors());
